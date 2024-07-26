@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.common.mpg.mapper.ZhanghMapper">
+  <resultMap id="BaseResultMap" type="com.common.mpg.pojo.Zhangh">
+    <id column="zhangh" jdbcType="INTEGER" property="zhangh" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="zhhuye" jdbcType="DECIMAL" property="zhhuye" />
+    <result column="shciye" jdbcType="DECIMAL" property="shciye" />
+    <result column="weihrq" jdbcType="DATE" property="weihrq" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from zhangh
+    where zhangh = #{zhangh,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.common.mpg.pojo.Zhangh">
+    insert into zhangh (zhangh, userId, zhhuye, 
+      shciye, weihrq)
+    values (#{zhangh,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{zhhuye,jdbcType=DECIMAL}, 
+      #{shciye,jdbcType=DECIMAL}, #{weihrq,jdbcType=DATE})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.common.mpg.pojo.Zhangh">
+    update zhangh
+    set userId = #{userid,jdbcType=INTEGER},
+      zhhuye = #{zhhuye,jdbcType=DECIMAL},
+      shciye = #{shciye,jdbcType=DECIMAL},
+      weihrq = #{weihrq,jdbcType=DATE}
+    where zhangh = #{zhangh,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select zhangh, userId, zhhuye, shciye, weihrq
+    from zhangh
+    where zhangh = #{zhangh,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select zhangh, userId, zhhuye, shciye, weihrq
+    from zhangh
+  </select>
+</mapper>
